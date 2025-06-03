@@ -74,8 +74,8 @@ variable "listener_protocol" {
 }
 
 variable "target_ids" {
-  description = "List of target IDs for the target group"
-  type        = list(string)
+  description = "Name of target IDs for the target group"
+  type        = string
 }
 
 variable "tags" {

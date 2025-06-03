@@ -41,7 +41,7 @@ resource "aws_lb_listener" "web_listener" {
 resource "aws_lb_target_group_attachment" "web_tg_attachment" {
   count            = length(var.target_ids)
   target_group_arn = aws_lb_target_group.web_tg.arn
-  target_id        = var.target_ids[count.index]
+  target_id        = var.target_ids
   port             = var.target_group_port
 }
 
