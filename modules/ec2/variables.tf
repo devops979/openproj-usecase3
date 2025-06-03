@@ -30,3 +30,14 @@ variable "user_data" {
   default     = ""
 
 }
+
+variable "volume_size" {
+  description = "Size of the root block device in GB"
+  type        = number
+  default     = 30
+}
+variable "volume_type" {
+  description = "Type of the root block device"
+  type        = string
+  default     = "gp3"
+}

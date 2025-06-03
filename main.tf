@@ -30,22 +30,23 @@ module "security_groups" {
 }
 
 module "openproject" {
-  source         = "./modules/ec2"
-  key_name       = var.key_name
-  ami_name       = var.ami_id
-  sg_id          = module.security_groups.web_sg_id
-  vpc_name       = module.network.vpc_name
-  public_subnets = module.network.public_subnets_id[0]
-  instance_type  = var.instance_type
-  project_name   = "demo-instance-openproject"
-  user_data      = <<-EOF
-                   #!/bin/bash
-                   sudo apt update -y
-                   sudo apt-get install -y docker.io
-                   sudo systemctl start docker
-                   sudo systemctl enable docker
-                   sudo docker run -d -p 80:80 -e OPENPROJECT_SECRET_KEY_BASE=secret -e OPENPROJECT_HTTPS=false openproject/openproject:15.4.1
-                   EOF
+  source             = "./modules/ec2"
+  key_name           = var.key_name
+  ami_name           = var.ami_id
+  sg_id              = module.security_groups.web_sg_id
+  vpc_name           = module.network.vpc_name
+  public_subnets     = module.network.public_subnets_id[0]
+  instance_type      = var.instance_type
+  project_name       = "demo-instance-openproject"
+
+  user_data = <<-EOF
+                #!/bin/bash
+                sudo apt update -y
+                sudo apt-get install -y docker.io
+                sudo systemctl start docker
+                sudo systemctl enable docker
+                sudo docker run -d -p 80:80 -e OPENPROJECT_SECRET_KEY_BASE=secret -e OPENPROJECT_HTTPS=false openproject/openproject:15.4.1
+                EOF
 }
 
 
