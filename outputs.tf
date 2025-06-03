@@ -17,11 +17,5 @@ output "web_instance_ids" {
 output "web_instance_ips" {
   value = module.ec2.public_ip
 }
-/*
-#output "db_endpoint" {
-#  value = module.rds.db_endpoint
-#}
 
-#output "alb_dns_name" {
-#  value = module.alb.alb_dns_name
-#}
+

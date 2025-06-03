@@ -29,7 +29,7 @@ module "security_groups" {
   tags   = var.tags
 }
 
-module "ec2" {
+module "openproject" {
   source         = "./modules/ec2"
   key_name       = var.key_name
   ami_name       = var.ami_id
@@ -37,13 +37,17 @@ module "ec2" {
   vpc_name       = module.network.vpc_name
   public_subnets = module.network.public_subnets_id
   instance_type  = var.instance_type
-  project_name   = "demo-instance"
+  project_name   = "demo-instance-openproject"
   user_data      = <<-EOF
                       #!/bin/bash
                       sudo apt update -y
                       sudo apt install nginx -y
                       sudo systemctl start nginx
                       sudo systemctl enable nginx
+                      sudo apt-get install -y docker.io
+                      sudo systemctl start docker
+                      sudo systemctl enable docker
+                      sudo docker run -dit -p 80:80 -e OPENPROJECT_SECRET_KEY_BASE=secret -e OPENPROJECT_HOST__NAME=0.0.0.0:80 -e OPENPROJECT_HTTPS=false openproject/community:12
                       EOF
 }
 
