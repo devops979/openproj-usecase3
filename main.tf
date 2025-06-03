@@ -70,6 +70,6 @@ module "alb" {
   unhealthy_threshold   = 2
   listener_port         = 80
   listener_protocol     = "HTTP"
-  target_ids            = module.ec2.instance_id
+  target_ids            = module.openproject.instance_id
   tags                  = var.tags
 }

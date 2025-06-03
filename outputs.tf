@@ -11,11 +11,11 @@ output "private_subnet_ids" {
 }
 
 output "web_instance_ids" {
-  value = module.ec2.instance_id
+  value = module.openproject.instance_id
 }
 
 output "web_instance_ips" {
-  value = module.ec2.public_ip
+  value = module.openproject.public_ip
 }
 
 
