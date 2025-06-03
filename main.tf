@@ -35,7 +35,7 @@ module "openproject" {
   ami_name       = var.ami_id
   sg_id          = module.security_groups.web_sg_id
   vpc_name       = module.network.vpc_name
-  public_subnets = module.network.public_subnets_id
+  public_subnets = module.network.public_subnets_id[0]
   instance_type  = var.instance_type
   project_name   = "demo-instance-openproject"
   user_data      = <<-EOF
