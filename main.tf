@@ -38,14 +38,14 @@ module "openproject" {
   public_subnets = module.network.public_subnets_id[0]
   instance_type  = var.instance_type
   project_name   = "demo-instance-openproject"
-  user_data      = <<-EOF
+  user_data      = <<-EOT
                       #!/bin/bash
                       sudo apt update -y
                       sudo apt-get install -y docker.io
                       sudo systemctl start docker
                       sudo systemctl enable docker
                       sudo docker run -dit -p 80:80 -e OPENPROJECT_SECRET_KEY_BASE=secret -e OPENPROJECT_HOST__NAME=0.0.0.0:80 -e OPENPROJECT_HTTPS=false openproject/community:12
-                      EOF
+                      EOT
 }
 
 

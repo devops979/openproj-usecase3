@@ -2,7 +2,6 @@
 variable "ami_name" {
   description = "AMI name for EC2 instances"
   type        = string
-  default     = "ami-0953476d60561c955" # Amazon Linux 2
 }
 
 variable "instance_type" {}
