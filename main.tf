@@ -41,9 +41,6 @@ module "openproject" {
   user_data      = <<-EOF
                       #!/bin/bash
                       sudo apt update -y
-                      sudo apt install nginx -y
-                      sudo systemctl start nginx
-                      sudo systemctl enable nginx
                       sudo apt-get install -y docker.io
                       sudo systemctl start docker
                       sudo systemctl enable docker
