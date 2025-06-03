@@ -52,23 +52,23 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "db_name" {
-  description = "The name of the database"
-  type        = string
-  default     = "mydatabase"
-}
+#variable "db_name" {
+#  description = "The name of the database"
+#  type        = string
+#  default     = "mydatabase"
+#}
 
-variable "db_username" {
-  description = "The username for the database"
-  type        = string
-  default     = "admin"
-}
+#variable "db_username" {
+#  description = "The username for the database"
+#  type        = string
+#  default     = "admin"
+#}
 
-variable "db_password" {
-  description = "The password for the database"
-  type        = string
-  default     = "mypassword"
-}
+#variable "db_password" {
+#  description = "The password for the database"
+#  type        = string
+#  default     = "mypassword"
+#}
 
 variable "tags" {
   description = "Tags to apply to resources"
