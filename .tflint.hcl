@@ -1,18 +1,22 @@
 plugin "aws" {
   enabled = true
+  version = "0.27.0"
+  source  = "github.com/terraform-linters/tflint-ruleset-aws"
 }
  
-rule "terraform_version" {
+# Configure AWS provider version constraints
+rule "terraform_required_providers" {
   enabled = true
-  version = ">= 1.0"
 }
  
-rule "aws_s3_bucket_versioning" {
+# Enforce version constraints
+rule "terraform_required_version" {
   enabled = true
-  message = "S3 buckets must have versioning enabled."
-  check = {
-    resource = "aws_s3_bucket"
-    key      = "versioning"
-    value    = "Enabled"
-  }
 }
+ 
+# Enforce consistent variable types
+rule "terraform_typed_variables" {
+  enabled = true
+}
+ 
+ 
